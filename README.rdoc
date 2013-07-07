@@ -241,7 +241,7 @@ advanced option.
 
 == INSTALL:
 
-sudo gem install aproxacs-s3sync
+sudo gem install cprobert-s3sync
 
 
 Your environment:

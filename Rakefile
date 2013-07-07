@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "aproxacs-s3sync"
+    gem.name = "cprobert-s3sync"
     gem.summary = %Q{Fork of s3sync to be compatible with ruby 1.9.}
-    gem.email = "aproxacs@gmail.com"
+    gem.email = "cprobert@gmail.com"
     gem.homepage = "http://s3sync.net"
-    gem.authors = ["aproxacs"]
+    gem.authors = ["cprobert"]
     gem.files.include FileList.new('lib/**/*.rb', "bin/*",
       "History.txt", "PostInstall.txt", "VERSION", "README.rdoc", "Rakefile")
 

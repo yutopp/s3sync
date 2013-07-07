@@ -23,5 +23,15 @@ module S3Config
       break
     end
   end
+
+   confpath.each do |path|
+    if File.exists?(path) and File.directory?(path) and File.exists?("#{path}/_s3config.yml")
+      config = YAML.load_file("#{path}/_s3config.yml")
+      config.each_pair do |key, value|
+        eval("$#{key.upcase} = '#{value}'")
+      end
+      break
+    end
+  end
     
 end
