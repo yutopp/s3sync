@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "cprobert-s3sync"
-    gem.summary = %Q{Fork of s3sync to be compatible with ruby 1.9.}
+    gem.summary = %Q{Fork of s3sync to be compatible with ruby 1.9.3}
     gem.email = "cprobert@gmail.com"
     gem.homepage = "http://s3sync.net"
     gem.authors = ["cprobert"]

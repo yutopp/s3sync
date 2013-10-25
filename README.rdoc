@@ -1,4 +1,7 @@
 
+== CHANGED from original to be compatible with 1.9.3
+Removed Iconv dependancy - changed to string.encode
+
 == CHANGED from original to be compatible with 1.9.2
 * require 'md5' 
 Instead require "digest/md5"

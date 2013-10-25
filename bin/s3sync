@@ -11,7 +11,7 @@
 module S3sync
 
   $S3SYNC_MIME_TYPES_FILE = (ENV["S3SYNC_MIME_TYPES_FILE"] or '/etc/mime.types')
-  $S3SYNC_VERSION = '1.3.1'
+  $S3SYNC_VERSION = '1.3.8'
 
   # always look "here" for include files (thanks aktxyz)
   $LOAD_PATH << File.join(File.expand_path(File.dirname(__FILE__)), "../lib/")
@@ -305,16 +305,19 @@ ENDUSAGE
           # get rid of the big s3 objects asap, just save light-weight nodes and strings
           items = tItems.collect do |item|
             if item.respond_to?('key')
-              key = Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", item.key).join
+              #key = Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", item.key).join
+              key = item.key.encode($S3SYNC_NATIVE_CHARSET, :invalid => :replace, :undef => :replace, :replace => "")
               Node.new(key, item.size, item.etag, item.last_modified)
             else
-              Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", item.prefix).join
+              #Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", item.prefix).join
+              item.prefix.encode($S3SYNC_NATIVE_CHARSET, :invalid => :replace, :undef => :replace, :replace => "")
             end
           end
           nextPage = d.properties.is_truncated
           marker = (d.properties.next_marker)? d.properties.next_marker : ((d.entries.length > 0)? d.entries.last.key : '')
           # get this into native char set (because when we feed it back to s3 that's what it will expect)
-          marker = Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", marker).join
+          #marker = Iconv.iconv($S3SYNC_NATIVE_CHARSET, "UTF-8", marker).join
+          marker = marker.encode($S3SYNC_NATIVE_CHARSET, :invalid => :replace, :undef => :replace, :replace => "")
           tItems = nil
           d = nil # get rid of this before recursing; it's big
           item = nil
