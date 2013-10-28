@@ -7,7 +7,7 @@ begin
     gem.name = "cprobert-s3sync"
     gem.summary = %Q{Fork of s3sync to be compatible with ruby 1.9.3}
     gem.email = "cprobert@gmail.com"
-    gem.homepage = "http://s3sync.net"
+    gem.homepage = "https://github.com/cprobert/s3sync"
     gem.authors = ["cprobert"]
     gem.files.include FileList.new('lib/**/*.rb', "bin/*",
       "History.txt", "PostInstall.txt", "VERSION", "README.rdoc", "Rakefile")
